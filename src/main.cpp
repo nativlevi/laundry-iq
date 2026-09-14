@@ -10,9 +10,9 @@
 // Laundry-IQ — Full System with FreeRTOS
 // ============================================================
 
-static constexpr float    VIBRATION_THRESHOLD  = 0.15f;
+static constexpr float    VIBRATION_THRESHOLD  = 0.08f;   // Lowered to detect gentle/short cycles
 static constexpr uint16_t START_COUNT_REQUIRED = 10;
-static constexpr uint16_t STOP_COUNT_REQUIRED  = 100;
+static constexpr uint16_t STOP_COUNT_REQUIRED  = 1200;    // 60 seconds of quiet before declaring DONE
 
 static constexpr uint32_t SAMPLING_INTERVAL_MS = 50;
 static constexpr uint32_t NETWORK_CHECK_MS     = 1000;
