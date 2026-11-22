@@ -10,7 +10,7 @@
 // Laundry-IQ — Full System with FreeRTOS
 // ============================================================
 
-static constexpr float    VIBRATION_THRESHOLD  = 0.08f;   // Lowered to detect gentle/short cycles
+static constexpr float    VIBRATION_THRESHOLD  = 0.05f;   // Low enough to catch gentle wash programs
 static constexpr uint16_t START_COUNT_REQUIRED = 10;
 static constexpr uint16_t STOP_COUNT_REQUIRED  = 1200;    // 60 seconds of quiet before declaring DONE
 
@@ -31,9 +31,9 @@ void samplingTask(void* pvParameters) {
 
     while (true) {
         float magnitude = sensor.calcMagnitude();
-        analyzer.feedSample(magnitude);
 
         if (xSemaphoreTake(stateMutex, pdMS_TO_TICKS(10)) == pdTRUE) {
+            analyzer.feedSample(magnitude);
             sharedState = analyzer.getState();
             xSemaphoreGive(stateMutex);
         }

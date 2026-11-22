@@ -11,10 +11,10 @@ void TelegramNotifier::onStateChange(MachineState newState) {
 
     switch (newState) {
         case MachineState::RUNNING:
-            message = "🔄 המכונה התחילה לרוץ!";
+            message = "🔄 המכונה התחילה לעבוד!";
             break;
         case MachineState::DONE:
-            message = "🧺 הכביסה סיימה! אפשר לבוא לפרוק.";
+            message = "🧺 הכביסה הסתיימה! אפשר לבוא לתלות.";
             break;
         default:
             return;  // IDLE — no notification needed
